@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Service Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('../images/7.jpg');
+      background-size: cover;
+      font-family: 'Arial Unicode', sans-serif;
+      color: #140110; /* Text color */
+    }
+
+    .login-container {
+      text-align: center;
+      margin-top: 100px;
+      padding: 10px;
+      border-radius: 7px;
+      box-shadow: 0 0 10px rgb(225, 65, 164);
+      background-color: rgba(226, 236, 238, 0.8); /* Background color with opacity */
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: rgba(230, 240, 239, 0.5); /* Background color with opacity */
+    }
+
+    .icon-container a {
+      text-decoration: none;
+      color: #00010c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 80px;
+    }
+
+    .icon-container img {
+      width: 150px;
+      height: 120px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo-container">
+        <img src="../images/sil.png" alt="logo">    </div>
+      <!-- Your existing content -->
+    <div class="icon-container">
+           <a href="../Engineer/Serviceform.html">
+        <img src="../images/service.png" alt="Service Engineer Icon">
+        <span>Service Engineer</span>
+      </a>
+      <a href="../Engineer/installation report.html">
+        <img src="../images/install.jpg" alt="Admin Icon">
+        <span>Installation Report</span>
+      </a>
+         </div>
+  </div>
+
+  <script>
+    function login() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      var storedData = localStorage.getItem(email);
+
+      // Check if the email exists in localStorage
+      if (storedData) {
+        var userDetails = JSON.parse(storedData);
+
+        // Check if the entered password matches the stored password
+        if (userDetails.Password === password) {
+          alert("Login successful!");
+          // Redirect to the page with icons after successful login
+          window.location.href = 'service_page.html?username=' + email;
+        } else {
+          alert("Invalid email or password. Please try again.");
+        }
+      } else {
+        alert("Invalid email or password. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>

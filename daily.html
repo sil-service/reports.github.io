@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SILASERS Daily Work Report</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <style>
+  body {
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  margin: 20px;
+  background-color: #e2a6e8; /* Light gray background */
+}
+
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle border */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50; /* Dark green header background */
+  color: white; /* White text for headers */
+}
+
+textarea {
+  width: calc(100% - 16px);
+  height: 100px;
+}
+
+button {
+  background-color: #008CBA; /* Blue button background */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005b80; /* Darker blue on hover */
+}
+
+</style>
+</head>
+<body>
+
+<form id="workReportForm">
+  <!-- <center><h2>SILASERS Daily Work Report</h2></center> -->
+  
+  <table>
+    <tr>
+      <th >Company Name & Location:</th>
+      <td colspan="4" style="border: 1px solid #ddd; padding: 10px;">
+        <center><img src="../images/sil.png" alt="Company Logo" style="max-width: 600px; max-height: 600px; margin-right: 0px; border: 1px solid #ddd;"></center>
+          <textarea id="companyName" name="companyName" readonly>
+            Suresh Indu Lasers Pvt. Ltd.
+            Ground Floor, House No.226, Sr. No.13, By Pass Road,
+            Uruli Devachi, Pune-412308
+
+          </textarea>
+        </div>
+      </td>
+    </tr>
+    
+    <tr>
+        <td colspan="4" style="background-color: #85b7d9; color: #100202; text-align: center;">
+          <h2>SILASERS Daily Work Report</h2>
+        </td>
+      </tr>
+      
+      
+    <tr>
+        <th>Company Name & Location:</th>
+        <td colspan="3">
+          <textarea id="companyName" name="companyName" ></textarea>
+        </td>
+      </tr>
+    <tr>
+      <th>Employee Name:</th>
+      <td><input type="text" id="employeeName" name="employeeName" required></td>
+      <th>Date:</th>
+      <td><input type="date" id="date" name="date" required></td>
+    </tr>
+    <tr>
+      <th>Visit Type:</th>
+      <td colspan="3">
+        <label><input type="radio" name="visitType" value="Shifting" required> Shifting</label>
+        <label><input type="radio" name="visitType" value="Machine Installation" required> Machine Installation</label>
+        <label><input type="radio" name="visitType" value="PM" required> PM</label>
+        <label><input type="radio" name="visitType" value="PIV" required> PIV</label>
+        <label><input type="radio" name="visitType" value="Other" required> Other</label>
+      </td>
+    </tr>
+    <tr>
+      <th>Work Report:</th>
+      <td colspan="3"><textarea id="workReport" name="workReport" required></textarea></td>
+    </tr>
+    <tr>
+      <th>Remarks:</th>
+      <td colspan="3"><textarea id="remarks" name="remarks"></textarea></td>
+    </tr>
+    <tr>
+      <th>IN Time:</th>
+      <td><input type="time" id="inTime" name="inTime" required></td>
+      <th>OUT Time:</th>
+      <td><input type="time" id="outTime" name="outTime" required></td>
+    </tr>
+    <tr>
+      <th>Name:</th>
+      <td><input type="text" id="Name" name="Name" required></td>
+      <th>Designation:</th>
+      <td><input type="text" id="Designation" name="Designation" required></td>
+    </tr>
+    <tr>
+      <th>Signature:</th>
+      <td><input type="text" id="signature" name="signature" required></td>
+    </tr>
+  </table>
+
+ <center><button type="button" onclick="generatePDF()">Submit</button></center> 
+</form>
+
+<script>
+    function generatePDF() {
+      const pdf = new jsPDF();
+      const formData = document.getElementById('workReportForm');
+  
+      // Set font for the entire document
+      pdf.setFont('Times New Roman', 'Times', 'serif');
+  
+      // Add content to the PDF
+      pdf.text(20, 20, 'SILASERS Daily Work Report');
+      pdf.text(20, 30, 'Company Name & Location: ' + formData.companyName.value);
+      pdf.text(20, 40, 'Employee Name: ' + formData.employeeName.value);
+      pdf.text(20, 50, 'Date: ' + formData.date.value);
+      pdf.text(20, 60, 'Visit Type: ' + formData.visitType.value);
+      pdf.text(20, 70, 'Work Report: ' + formData.workReport.value);
+      pdf.text(20, 80, 'Remarks: ' + formData.remarks.value);
+      pdf.text(20, 90, 'IN Time: ' + formData.inTime.value);
+      pdf.text(20, 100, 'OUT Time: ' + formData.outTime.value);
+      pdf.text(20, 110, 'Name: ' + formData.Name.value);
+      pdf.text(20, 120, 'Designation: ' + formData.Designation.value);
+      pdf.text(20, 130, 'Signature: ' + formData.signature.value);
+  
+      // Save the PDF
+      pdf.save('work_report.pdf');
+    }
+  </script>
+
+</body>
+</html>
