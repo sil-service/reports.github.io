@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
          body {
       margin: 0;
@@ -51,7 +52,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="login-container">
+  <!-- <div class="login-container">
     <marquee width="60%" direction="left" height="100px">
       <div>
         <img src="./sil.png" alt="logo">
@@ -71,7 +72,28 @@
         <img src="./service.png" alt="Service Engineer Icon">
         <center><span>Service Engineer</span></center>
       </a>
-    </div>
+    </div> -->
+    <div class="login-container">
+      <marquee width="60%" direction="left" height="100px">
+        <div>
+          <img src="./sil.png" alt="logo">
+         </div>
+        </marquee>
+      <h2> </h2>
+      <div class="icon-container">
+        <a href="./admin.html" onclick="login('admin')">
+          <i class="material-icons">admin_panel_settings</i>
+          <span>Admin</span>
+        </a>
+        <a href="./user.html" onclick="login('user')">
+          <i class="material-icons">person</i>
+          <span>User</span>
+        </a>
+        <a href="./eng login.html" onclick="login('engineer')">
+          <i class="material-icons">build</i>
+          <span>Service Engineer</span>
+        </a>
+      </div>
   </div>
 
   <script src="scripts.js"></script>

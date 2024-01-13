@@ -96,14 +96,14 @@
         </header>
         <Center><h2>Services Report</h2></Center>
                 <!-- <form method="POST" action="https://script.google.com/macros/s/AKfycbw8LS8gRkWcD-Xf1TdB1blAJGq2ltA-fW---7o3GxO7h3-LsQasbdkMCRJHJk1kefcC/exec">   -->
-                 <form method="POST" action="https://script.google.com/macros/s/AKfycbx-t9FRMHZQRPX16_xvHYpW5eanSDSUyoTso4aCN6_9SLsj3lgDjJrE6NQvTeLMYdBKDQ/exec">  
+                 <form method="POST" action="https://script.google.com/macros/s/AKfycbyJ42dKdrEZ3bc-KM_4-8TNFNmQtox_fC3tUNUpWGDMqJY0_D5TbOnBjnB8lRQBDR3NSg/exec">  
                <div class="form-group">
                 <label for="Engineer Name">Engineer Name<span class="mandatory"></span>:</label>
                 <input type="text" id="Engineer Name" name="Engineer Name" required>
             </div>
             <div class="form-group">
-                <label for="Customer Name">Customer Name<span class="mandatory"></span>:</label>
-                <input type="text" id="Customer Name" name="Customer Name" required>
+                <label for="Company Name">Company Name<span class="mandatory"></span>:</label>
+                <input type="text" id="Company Name" name="Company Name" required>
             </div>
             <div class="form-group">
                 <label for="Select Machine Type">Select Machine Type<span class="mandatory"></span>:</label>
@@ -111,22 +111,41 @@
                     <option value="">Select Machine Type</option>
                     <option value="Marking Machine">Marking Machine</option>
                     <option value="Laser Cutting">Laser Cutting</option>
+                    <option value="2 Chuk tube Cutting">2 Chuk tube Cutting</option>
+                    <option value="3 Chuk tube Cutting">3 Chuk tube Cutting</option>
+                    <option value="Linear Motor Machine">Linear Motor Machine</option>
+                    <option value="Fanuc sheet Cutting">Fanuc sheet Cutting</option>
+                    <option value="Backhoff sheet Cutting">Backhoff sheet Cutting</option>
+                    <option value="Ecat sheet Cutting">Ecat sheet Cutting</option>
+                    <option value="Combo Machine">Combo Machine</option>
+                    <option value="SPM">SPM</option>
+                    <option value="Welding Machine">Welding Machine</option>
+                    <option value="Other">Other</option>
                     <!-- Add more machine types as needed -->
                 </select>
             </div>
             <div class="form-group">
-                <label for="MachineCode">Machine Code<span class="mandatory">*</span>:</label>
-                <input type="text" id="MachineCode" name="Machine Code" required>
+                <label for="Machine Serial Number">Machine Serial Number<span class="mandatory">*</span>:</label>
+                <input type="text" id="Machine Serial Number" name="Machine Serial Number" required>
             </div>
            
             <div class="form-group">
-                <label for="Start Date">Start Date<span class="mandatory"></span>:</label>
-                <input type="date" id="Start Date" name="Start Date" required>
+                <label for="Start-Date">Start Date<span class="mandatory"></span>:</label>
+                <input type="date" id="Start-Date" name="Start-Date" required>
             </div>
             <div class="form-group">
-                <label for="End Date">End Date<span class="mandatory"></span>:</label>
-                <input type="date" id="End Date" name="End Date" required>
+                <label for="End-Date">End Date<span class="mandatory"></span>:</label>
+                <input type="date" id="End-Date" name="End-Date" required>
             </div>
+            <!-- <div class="form-group">
+                <label for="Start Date">Start Date<span class="mandatory"></span>:</label>
+                <input type="date" id="startDate" name="startDate" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="End Date">End Date<span class="mandatory"></span>:</label>
+                <input type="date" id="endDate" name="endDate" required>
+            </div> -->
             <div class="form-group">
                 <label for="Area">Select Area<span class="mandatory"></span>:</label>
                 <select id="Select Area" name="Select Area" onchange="showProblems()" required>
@@ -280,24 +299,55 @@
                 </select>
                 <input type="hidden" id="TokenNumber" name="Token Number">
             </div>
-            <button type="submit">Submit</button>
+            <div class="form-group">
+                <label for="Customer Feedback">Customer Feedback:</label>
+                <textarea id="Customer Feedback" name="Customer Feedback" rows="4" ></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Customer Name Seal & Sign">Customer Name Seal & Sign:</label>
+                <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
+            </div>
+            <div style="text-align: center;">
+                <button type="submit" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px;">
+                    Submit
+                </button>
+            </div>
         </form>
     </div>
     <!-- <button onclick="printForm()" id="printBtn">Print Form</button> -->
 
       <script>
 
-        function validateDates() {
-            var startDate = new Date(document.getElementById('Start Date').value);
-            var endDate = new Date(document.getElementById('End Date').value);
+     
+          // Get references to the input elements
+        var startDateInput = document.getElementById('Start-Date');
+        var endDateInput = document.getElementById('End-Date');
 
-            if (endDate < startDate) {
-                alert("End date cannot be earlier than the start date.");
-                return false;
+        // Add event listeners to handle date validation
+        startDateInput.addEventListener('input', validateStartDate);
+        endDateInput.addEventListener('input', validateEndDate);
+
+        function validateStartDate() {
+            var startDate = new Date(startDateInput.value);
+            var currentDate = new Date();
+
+            // Check if the selected start date is greater than the current date
+            if (startDate > currentDate) {
+                alert('Start date cannot be greater than the current date.');
+                startDateInput.value = ''; // Clear the input value
             }
-            return true;
         }
-       
+
+        function validateEndDate() {
+            var startDate = new Date(startDateInput.value);
+            var endDate = new Date(endDateInput.value);
+
+            // Check if the selected end date is less than the start date
+            if (endDate < startDate) {
+                alert('End date cannot be less than the start date.');
+                endDateInput.value = ''; // Clear the input value
+            }
+        }
         function showProblems() {
             var selectedOption = document.getElementById("Select Area").value;
             var machineProblems = document.getElementById("machineProblems");
