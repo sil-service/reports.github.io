@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
          body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url('../images/main.jpg');
+      background-image: url('./main.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       /* Adjust other background properties as needed */
@@ -37,12 +36,16 @@
     }
 
     .icon-container a img {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       border: 2px solid #ccc;
       transition: transform 0.3s ease-in-out;
     }
+    .icon-container span {
+  font-weight: bold; /* Make the text bold */
+  font-size: 20px; /* Adjust the font size as needed */
+}
 
     .icon-container a img:hover {
       transform: scale(1.1);
@@ -52,7 +55,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- <div class="login-container">
+  <div class="login-container">
     <marquee width="60%" direction="left" height="100px">
       <div>
         <img src="./sil.png" alt="logo">
@@ -72,28 +75,7 @@
         <img src="./service.png" alt="Service Engineer Icon">
         <center><span>Service Engineer</span></center>
       </a>
-    </div> -->
-    <div class="login-container">
-      <marquee width="60%" direction="left" height="100px">
-        <div>
-          <img src="./sil.png" alt="logo">
-         </div>
-        </marquee>
-      <h2> </h2>
-      <div class="icon-container">
-        <a href="./admin.html" onclick="login('admin')">
-          <i class="material-icons">admin_panel_settings</i>
-          <span>Admin</span>
-        </a>
-        <a href="./user.html" onclick="login('user')">
-          <i class="material-icons">person</i>
-          <span>User</span>
-        </a>
-        <a href="./eng login.html" onclick="login('engineer')">
-          <i class="material-icons">build</i>
-          <span>Service Engineer</span>
-        </a>
-      </div>
+    </div>
   </div>
 
   <script src="scripts.js"></script>
