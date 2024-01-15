@@ -54,25 +54,35 @@
     }
 
     /* Additional styles for the button and form */
-    .submit-btn {
+ .submit-btn,
+    .dashboard-btn {
       display: block;
       margin: 20px auto;
       padding: 20px 20px;
       font-size: 16px;
       cursor: pointer;
-      background-color: dodgerblue;
-      color: white;
       border: none;
       border-radius: 4px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
     }
 
-    .submit-btn:hover {
+    .submit-btn {
+      background-color: dodgerblue;
+    }
+
+    .dashboard-btn {
+      background-color: green; /* You can change this color */
+    }
+
+    .submit-btn:hover,
+    .dashboard-btn:hover {
       background-color: #007acc;
     }
-
     /* Background Image */
     body {
-      background-image: url('D:/NITIN SIL/Sil_Service_Form/service engineer/Engineer logins/Installation Report/2.jpg');
+      background-image: url('./ins.jpg');
       background-size: cover;
       background-repeat: no-repeat;
     }

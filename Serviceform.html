@@ -95,8 +95,8 @@
             <img src="./sil.png" alt="Company Logo">
         </header>
         <Center><h2>Services Report</h2></Center>
-                <!-- <form method="POST" action="https://script.google.com/macros/s/AKfycbw8LS8gRkWcD-Xf1TdB1blAJGq2ltA-fW---7o3GxO7h3-LsQasbdkMCRJHJk1kefcC/exec">   -->
-                 <form method="POST" action="https://script.google.com/macros/s/AKfycbyJ42dKdrEZ3bc-KM_4-8TNFNmQtox_fC3tUNUpWGDMqJY0_D5TbOnBjnB8lRQBDR3NSg/exec">  
+                <!-- <form method="POST" action="https://script.google.com/macros/s/AKfycbxTTjSV276lXXYzcHW0E_yh6k1Dx3Rzr7FBOjmJXhajj4FoGWjXfccURBnGfXSpsXmh/exec">   -->
+                 <form method="POST" action="https://script.google.com/macros/s/AKfycbxAU38HwQvxaKniqWQlL9gQC5bW1Pm1TJqElsqR03D1BXe0DNaISMiF7sQdNzoPRLPapA/exec">  
                <div class="form-group">
                 <label for="Engineer Name">Engineer Name<span class="mandatory"></span>:</label>
                 <input type="text" id="Engineer Name" name="Engineer Name" required>
@@ -125,6 +125,19 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="Select Service Type">Select Service Type<span class="mandatory"></span>:</label>
+                <select id="Select Service Type" name="Select Service Type" onchange="showServiceCodeInput()" required>
+                    <option value="">Select Service Type</option>
+                    <option value="In warrenty">In warrenty</option>
+                    <option value="Out of Warrenty">Out of Warrenty</option>
+                    <option value="AMC">AMC</option>
+                    <option value="Preventive Maintainance Visit">Preventive Maintainance Visit</option>
+                    
+                    <option value="Other">Other</option>
+                    <!-- Add more machine types as needed -->
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="Machine Serial Number">Machine Serial Number<span class="mandatory">*</span>:</label>
                 <input type="text" id="Machine Serial Number" name="Machine Serial Number" required>
             </div>
@@ -137,16 +150,7 @@
                 <label for="End-Date">End Date<span class="mandatory"></span>:</label>
                 <input type="date" id="End-Date" name="End-Date" required>
             </div>
-            <!-- <div class="form-group">
-                <label for="Start Date">Start Date<span class="mandatory"></span>:</label>
-                <input type="date" id="startDate" name="startDate" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="End Date">End Date<span class="mandatory"></span>:</label>
-                <input type="date" id="endDate" name="endDate" required>
-            </div> -->
-            <div class="form-group">
+                      <div class="form-group">
                 <label for="Area">Select Area<span class="mandatory"></span>:</label>
                 <select id="Select Area" name="Select Area" onchange="showProblems()" required>
                     <option value="">Area</option>
@@ -301,16 +305,48 @@
             </div>
             <div class="form-group">
                 <label for="Customer Feedback">Customer Feedback:</label>
-                <textarea id="Customer Feedback" name="Customer Feedback" rows="4" ></textarea>
+                <textarea id="Customer Feedback" name="Customer Feedback" rows="7" ></textarea>
             </div>
             <div class="form-group">
                 <label for="Customer Name Seal & Sign">Customer Name Seal & Sign:</label>
                 <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
             </div>
             <div style="text-align: center;">
-                <button type="submit" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px;">
-                    Submit
-                </button>
+                <!-- Add this button/link after the Submit button -->
+<!-- <div style="text-align: center;">
+    <button type="submit" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px;">
+        Submit
+    </button>
+    <a href="./select.html" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px;">
+        Go To Dashboard
+    </a>
+</div> -->
+<div style="text-align: center;">
+    <button type="submit" id="submitButton" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px; float: left;">
+        Submit
+    </button>
+    <a href="./select.html" id="dashboardLink" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px; float: right;">
+        Go To Dashboard
+    </a>
+    <div style="clear: both;"></div> <!-- Add a clearing element to prevent content overlap -->
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function (event) {
+            // Ask for permission before submitting
+            if (!confirm('Are you sure you want to submit?')) {
+                event.preventDefault(); // Prevent the default submit action if the user declines
+            }
+        });
+
+        document.getElementById('dashboardLink').addEventListener('click', function (event) {
+            // Ask for permission before navigating to the dashboard
+            if (!confirm('Are you sure you want to go to the dashboard?')) {
+                event.preventDefault(); // Prevent the default link action if the user declines
+            }
+        });
+    </script>
+</div>
+
             </div>
         </form>
     </div>
@@ -409,27 +445,49 @@
 		document.getElementById("Area").value=allSelelectProblems.join(", ")
 		}
           </script>
-           <script>
-            document.addEventListener('DOMContentLoaded', () => {
-              let lastTokenNumber = localStorage.getItem('lastTokenNumber');
-              if (!lastTokenNumber) {
-                lastTokenNumber = 0;
-              }
-          
-              document.querySelector('form').addEventListener('submit', function(event) {
-                event.preventDefault(); 
-          
-                lastTokenNumber++;
-                const tokenNumber = 'SIL' + ('000000' + lastTokenNumber).slice(-6);
-          
-                document.getElementById('TokenNumber').value = tokenNumber;
-                localStorage.setItem('lastTokenNumber', lastTokenNumber);
-          
-                this.submit(); 
-              });
-            });          
-            </script>  
-        
+         
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  let lastTokenNumber = localStorage.getItem('lastTokenNumber');
+                  let lastYear = localStorage.getItem('lastYear');
+              
+                  const currentYear = new Date().getFullYear();
+              
+                  if (!lastTokenNumber || !lastYear || lastYear != currentYear) {
+                    lastTokenNumber = 0;
+                    lastYear = currentYear;
+                  }
+              
+                  document.querySelector('form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+              
+                    // Increment the last token number
+                    lastTokenNumber++;
+              
+                    // Reset token number to 1 if it reaches SIL999999
+                    if (lastTokenNumber > 999999) {
+                      lastTokenNumber = 1;
+              
+                      // Update the year if the token number resets
+                      lastYear = currentYear;
+                    }
+              
+                    // Generate the new token number with the year
+                    const tokenNumber = `SIL${('000000' + lastTokenNumber).slice(-6)} / ${lastYear}`;
+              
+                    // Set the new token number in the form field
+                    document.getElementById('TokenNumber').value = tokenNumber;
+              
+                    // Update the local storage with the new last token number and year
+                    localStorage.setItem('lastTokenNumber', lastTokenNumber);
+                    localStorage.setItem('lastYear', lastYear);
+              
+                    // Submit the form
+                    this.submit();
+                  });
+                });
+              </script>
+              
 <script>
     function showMachineCodeInput() {
         var selectedMachineType = document.getElementById("MachineType").value; // machine types select here
@@ -442,7 +500,18 @@
         }
     }
 </script>
-       
+<script>
+    function showServiceCodeInput() {
+        var selectedServiceType = document.getElementById("ServiceType").value; // Service types select here
+        var ServiceCodeInput = document.getElementById("ServiceCodeInput");
+
+        if (selectedServiceType !== "") {
+            ServiceCodeInput.style.display = "block";
+        } else {
+            ServiceCodeInput.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
 

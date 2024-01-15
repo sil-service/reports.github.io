@@ -162,8 +162,31 @@
                 <label for="Customer Name Seal & Sign">Customer Name Seal & Sign:</label>
                 <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
             </div>
-            <button type="submit" style="display: block; margin: 0 auto; color: #fff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px;">Submit</button>
-
+            <div style="text-align: center;">
+                <button type="submit" id="submitButton" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px; float: left;">
+                    Submit
+                </button>
+                <a href="./select.html" id="dashboardLink" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px; float: right;">
+                    Go To Dashboard
+                </a>
+                <div style="clear: both;"></div> <!-- Add a clearing element to prevent content overlap -->
+            
+                <script>
+                    document.getElementById('submitButton').addEventListener('click', function (event) {
+                        // Ask for permission before submitting
+                        if (!confirm('Are you sure you want to submit?')) {
+                            event.preventDefault(); // Prevent the default submit action if the user declines
+                        }
+                    });
+            
+                    document.getElementById('dashboardLink').addEventListener('click', function (event) {
+                        // Ask for permission before navigating to the dashboard
+                        if (!confirm('Are you sure you want to go to the dashboard?')) {
+                            event.preventDefault(); // Prevent the default link action if the user declines
+                        }
+                    });
+                </script>
+            </div>
 
         </form>
     </div>

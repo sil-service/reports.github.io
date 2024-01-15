@@ -190,40 +190,40 @@
        <!-- Power Supply Details Form -->
        <div class="table">
         <div class="row header">
-          <div class="cell">Power Supply</div>
-          <div class="cell">Standard value</div>
-          <div class="cell">Actual Readings*</div>
-          <div class="cell">Remarks*</div>
+          <div class="cell">Power Supply<span class="mandatory"></span>*</div>
+          <div class="cell">Standard value<span class="mandatory"></span>*</div>
+          <div class="cell">Actual Readings<span class="mandatory"></span>*</div>
+          <div class="cell">Remarks<span class="mandatory"></span>*</div>
         </div>
         <div class="row">
-          <div class="cell">Phase to Phase</div>
-          <div class="cell">400/415VAC</div>
-          <div class="cell"><input type="text" name="phaseToPhase" placeholder="" required></div>
-          <div class="cell"><input type="text" name="phaseToPhase" placeholder="Enter remark" required></div>
+          <div class="cell">Phase to Phase<span class="mandatory"></span>*</div>
+          <div class="cell">400/415VAC<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="phaseToPhase" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="phaseToPhase" placeholder="Enter remark*" required></div>
         </div>
         <div class="row">
-          <div class="cell">Phase to Neutral</div>
-          <div class="cell">220/240VAC</div>
-          <div class="cell"><input type="text" name="phaseToNeutral" placeholder="" required></div>
-          <div class="cell"><input type="text" name="phaseToNeutral" placeholder="Enter remark" required></div>
+          <div class="cell">Phase to Neutral<span class="mandatory"></span>*</div>
+          <div class="cell">220/240VAC<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="phaseToNeutral" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="phaseToNeutral" placeholder="Enter remark*" required></div>
         </div>
         <div class="row">
-          <div class="cell">Phase to Earth</div>
-          <div class="cell">220/240VAC</div>
-          <div class="cell"><input type="text" name="phaseToEarth" placeholder="" required></div>
-          <div class="cell"><input type="text" name="phaseToEarth" placeholder="Enter remark" required></div>
+          <div class="cell">Phase to Earth<span class="mandatory"></span>*</div>
+          <div class="cell">220/240VAC<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="phaseToEarth" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="phaseToEarth" placeholder="Enter remark*" required></div>
         </div>
         <div class="row">
-          <div class="cell">Neutral to Earth</div>
-          <div class="cell">Less than 1 Volts</div>
-          <div class="cell"><input type="text" name="neutralToEarth" placeholder="" required></div>
-          <div class="cell"><input type="text" name="neutralToEarth" placeholder="Enter remark" required></div>
+          <div class="cell">Neutral to Earth<span class="mandatory"></span>*</div>
+          <div class="cell">Less than 1 Volts<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="neutralToEarth" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="neutralToEarth" placeholder="Enter remark*" required></div>
         </div>
         <div class="row">
-          <div class="cell">Earth Resistance</div>
-          <div class="cell">Less than 3 ohms</div>
-          <div class="cell"><input type="text" name="earthResistance" placeholder="" required></div>
-          <div class="cell"><input type="text" name="earthResistance" placeholder="Enter remark" required></div>
+          <div class="cell">Earth Resistance<span class="mandatory"></span>*</div>
+          <div class="cell">Less than 3 ohms<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="earthResistance" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="earthResistance" placeholder="Enter remark*" required></div>
         </div>
       </div>
             
@@ -363,10 +363,28 @@
       <label for="attachment">Upload Document:</label>
       <input type="file" id="attachment" name="attachment"><br><br> -->
        <input type="submit" value="Submit" class="submit-btn print-hide">
-
+       <button type="button" onclick="goToDashboard()" class="dashboard-btn">Go to Dashboard</button>
     <!-- </div>
      -->
      <!-- <script src="D:\NITIN SIL\Sil_Service_Form\service engineer\Engineer logins\Installation Report/Installation.js"></script> -->
+     <script>
+    // Function to handle form submission
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      // Prevent the default form submission
+      event.preventDefault();
+      
+      // Perform any form processing if needed
+
+      // Redirect to the dashboard
+      window.location.href = './select.html';
+    });
+
+    // Function to handle going to the dashboard without form submission
+    function goToDashboard() {
+      window.location.href = './select.html';
+    }
+  </script>
+
     <script>
       function addOtherRow() {
   // Get the table where new rows will be added
