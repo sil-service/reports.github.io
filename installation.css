@@ -90,10 +90,7 @@ th {
   margin-right: 5px; /* Add space between icon and text */
 }
 
-/* .submit-btn:hover,
-.dashboard-btn:hover {
-  background-color: #007acc;
-} */
+
 
 /* Power Supply Details Form table styles */
 .table {
@@ -168,5 +165,33 @@ th {
   .submit-btn,
   .dashboard-btn {
     display: none;
+  }
+}
+@media print {
+  #addOtherButton {
+    display: none;
+  }
+}
+@media print {
+  #add-thickness-button {
+    display: none;
+  }
+}
+/* Default styles for all devices */
+body {
+  font-size: 16px;
+}
+
+/* Media query for devices with a maximum width of 768px */
+@media only screen and (max-width: 768px) {
+  body {
+      font-size: 14px;
+  }
+}
+
+/* Media query for devices with a maximum width of 480px */
+@media only screen and (max-width: 480px) {
+  body {
+      font-size: 12px;
   }
 }
